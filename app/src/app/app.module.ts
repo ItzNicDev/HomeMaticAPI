@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import { WatertankComponent } from './components/watertank/watertank.component';
 import { CamerasComponent } from './components/cameras/cameras.component';
+import { FoldableComponent } from './components/foldable/foldable.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WatertankComponent,
-    CamerasComponent
+    CamerasComponent,
+    FoldableComponent
   ],
   imports: [
     BrowserModule,
