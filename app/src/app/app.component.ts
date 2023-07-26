@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   public percent: any;
 public liters: number = 0;
 private litersMax: number = 4500;
+public test:string = "hello world"
+
   constructor(private http: HttpClient,private dataservice:DataService) {
   }
 
