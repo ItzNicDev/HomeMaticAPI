@@ -10,7 +10,7 @@ import * as xml2js from 'xml2js';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public response: any;
+  public percent: any;
 public liters: number = 0;
 private litersMax: number = 4500;
   constructor(private http: HttpClient,private dataservice:DataService) {
@@ -22,17 +22,17 @@ private litersMax: number = 4500;
       const serializer = new XMLSerializer();
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(data, 'text/xml');
-      let value = xmlDoc.querySelector('[name="Wasserstandsmelder"]');
-      value = xmlDoc.querySelector('[name="HM-Sen-Wa-Od PEQ1605600:1"]');
-      value = xmlDoc.querySelector('[name="BidCos-RF.PEQ1605600:1.FILLING_LEVEL"]');
+      let response = xmlDoc.querySelector('[name="Wasserstandsmelder"]');
+      response = xmlDoc.querySelector('[name="HM-Sen-Wa-Od PEQ1605600:1"]');
+      response = xmlDoc.querySelector('[name="BidCos-RF.PEQ1605600:1.FILLING_LEVEL"]');
 
-      let filteredvalue = value?.getAttribute('value');
+      let filteredvalue = response?.getAttribute('value');
 
       if (filteredvalue !== null) {
         // @ts-ignore
-        this.response = (parseInt(filteredvalue) - 10);
+        this.percent = (parseInt(filteredvalue) - 10);
 
-        this.liters = this.litersMax * (this.response / 100)
+        this.liters = this.litersMax * (this.percent / 100)
       } else {
         console.log("Attribute 'value' not found or is null.");
       }
